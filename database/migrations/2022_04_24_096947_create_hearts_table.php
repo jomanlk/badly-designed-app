@@ -15,9 +15,9 @@ return new class extends Migration
     {
         Schema::create('hearts', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
             $table->foreignId('user_id');
             $table->foreignId('message_id');
+            $table->timestamps();
         });
     }
 
