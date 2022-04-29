@@ -2,7 +2,9 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\Heart;
+use App\Models\Message;
+use App\Models\User;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -12,8 +14,14 @@ class DatabaseSeeder extends Seeder
      *
      * @return void
      */
-    public function run()
+    public function run(
+        UserSeeder $userSeeder,
+        MessageSeeder $messageSeeder,
+        HeartSeeder $heartSeeder,
+        )
     {
-        // \App\Models\User::factory(10)->create();
+       $userSeeder->run();
+       $messageSeeder->run();
+       $heartSeeder->run();
     }
 }
