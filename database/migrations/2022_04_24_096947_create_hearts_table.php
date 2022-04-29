@@ -18,6 +18,7 @@ return new class extends Migration
             $table->foreignId('user_id');
             $table->foreignId('message_id');
             $table->timestamps();
+            $table->unique(array('user_id', 'message_id'));
         });
     }
 
