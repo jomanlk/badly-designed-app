@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\V1\MessageController;
 use App\Http\Controllers\V1\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -22,6 +23,10 @@ Route::group([
 
     Route::get('/user/{id}', [UserController::class, 'show']);
     Route::get('/user/search/{keyword}', [UserController::class, 'searchByName']);
+
+
+    Route::get('/message/{id}', [MessageController::class, 'show']);
+    Route::get('/message/search/{keyword}', [MessageController::class, 'searchByText']);
 
 });
 
