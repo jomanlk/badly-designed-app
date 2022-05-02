@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\V1;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\UserCollection;
+use App\Http\Resources\UserResource;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -41,9 +43,7 @@ class UserController extends Controller
             return response(["error" => "user not found"], 404);
         }
 
-        return response([
-            'response' => $user
-        ]);
+        return new UserResource($user);
     }
 
 
@@ -71,8 +71,6 @@ class UserController extends Controller
      */
     public function searchByName(string $keyword)
     {
-        return [
-            'response' => User::where('name', 'like', '%' . $keyword . '%')->get()
-        ];
+        return new UserCollection(User::where('name', 'like', '%' . $keyword . '%')->paginate());
     }
 }
