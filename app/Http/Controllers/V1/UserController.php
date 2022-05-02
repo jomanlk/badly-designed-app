@@ -8,14 +8,69 @@ use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
-    public function show(int $id) {
-        return [
-            'response' => User::findOrFail($id)
-        ];
+
+    /**
+     * @OA\Get(
+     *      path="/user/{id}",
+     *      tags={"Users"},
+     *      summary="Get a user",
+     *      description="Returns the user object that matches the ID",
+     *      @OA\Parameter(
+     *          name="id",
+     *          description="User id",
+     *          required=true,
+     *          in="path",
+     *          @OA\Schema(
+     *              type="integer"
+     *          )
+     *      ),
+     *      @OA\Response(
+     *          response=200,
+     *          description="User found",
+     *       ),
+     *      @OA\Response(
+     *          response=404,
+     *          description="Not found",
+     *      )
+     *     )
+     */
+    public function show(int $id)
+    {
+        $user = User::find($id);
+        if (empty($user)) {
+            return response(["error" => "user not found"], 404);
+        }
+
+        return response([
+            'response' => $user
+        ]);
     }
 
 
-    public function searchByName(string $keyword) {
+    /**
+     * @OA\Get(
+     *      path="/user/search/{keyword}",
+     *      tags={"Users"},
+     *      summary="Find users by name",
+     *      description="Returns all users who have a name that mathes the search query",
+     *      @OA\Parameter(
+     *          name="keyword",
+     *          description="Search keywords",
+     *          required=true,
+     *          in="path",
+     *          @OA\Schema(
+     *              type="string"
+     *          )
+     *      ),
+     *      @OA\Response(
+     *          response=200,
+     *          description="List of all users who matched the search query",
+     *       )
+     *     )
+     * )
+     */
+    public function searchByName(string $keyword)
+    {
         return [
             'response' => User::where('name', 'like', '%' . $keyword . '%')->get()
         ];

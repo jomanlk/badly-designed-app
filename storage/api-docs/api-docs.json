@@ -1,0 +1,126 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "BadApp™ API Documentation",
+        "description": "API documentation for an example of a poorly designed application",
+        "version": "1.0.0"
+    },
+    "servers": [
+        {
+            "url": "http://localhost/api/v1",
+            "description": "Demo API Server"
+        }
+    ],
+    "paths": {
+        "/message/{id}": {
+            "get": {
+                "tags": [
+                    "Messages"
+                ],
+                "summary": "Get a message",
+                "description": "Returns the message object that matches the ID",
+                "operationId": "807e830f1c1b2d8b3d85ae5990fa019e",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Message id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Message found"
+                    },
+                    "404": {
+                        "description": "Not found"
+                    }
+                }
+            }
+        },
+        "/message/search/{keyword}": {
+            "get": {
+                "tags": [
+                    "Messages"
+                ],
+                "summary": "Find messages by text",
+                "description": "Returns all messages that contain the search query",
+                "operationId": "2442b2808058b5d6219fd7499db5a67f",
+                "parameters": [
+                    {
+                        "name": "keyword",
+                        "in": "path",
+                        "description": "Search keywords",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "List of all messages that matched the search query"
+                    }
+                }
+            }
+        },
+        "/user/{id}": {
+            "get": {
+                "tags": [
+                    "Users"
+                ],
+                "summary": "Get a user",
+                "description": "Returns the user object that matches the ID",
+                "operationId": "266b8697bd4a1a9d08e0fd4336f64483",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "User id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "User found"
+                    },
+                    "404": {
+                        "description": "Not found"
+                    }
+                }
+            }
+        },
+        "/user/search/{keyword}": {
+            "get": {
+                "tags": [
+                    "Users"
+                ],
+                "summary": "Find users by name",
+                "description": "Returns all users who have a name that mathes the search query",
+                "operationId": "cda312447e8e9aeae036809c48d21c63",
+                "parameters": [
+                    {
+                        "name": "keyword",
+                        "in": "path",
+                        "description": "Search keywords",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "List of all users who matched the search query"
+                    }
+                }
+            }
+        }
+    }
+}
