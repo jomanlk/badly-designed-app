@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\V1;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\MessageCollection;
+use App\Http\Resources\MessageResource;
 use App\Models\Message;
 use Illuminate\Http\Request;
 
@@ -40,9 +42,7 @@ class MessageController extends Controller
             return response(["error" => "message not found"], 404);
         }
 
-        return response([
-            'response' => $message
-        ]);
+        return new MessageResource($message);
     }
 
 
@@ -70,8 +70,6 @@ class MessageController extends Controller
      */
     public function searchByText(string $keyword)
     {
-        return [
-            'response' => Message::where('message', 'like', '%' . $keyword . '%')->get()
-        ];
+        return new MessageCollection(Message::where('message', 'like', '%' . $keyword . '%')->paginate());
     }
 }
