@@ -17,9 +17,7 @@ class HeartResource extends JsonResource
     public function toArray($request)
     {
         return [
-            'id' => $this->id,
-            'user' => new UserResource(User::find($this->user_id)),
-            'message' => new MessageResource(Message::find($this->message_id)),
+            'user_id' => new UserResource(User::find($this->user_id)),
             'created_at' => $this->created_at,
         ];
     }

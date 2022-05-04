@@ -9,7 +9,7 @@ class Message extends Model
 {
     use HasFactory;
 
-    protected $appends = ['heart_count'];
+    protected $appends = ['heart_count', 'recent_heart'];
 
     public function user()
     {
@@ -24,5 +24,10 @@ class Message extends Model
     public function getHeartCountAttribute()
     {
         return Heart::where('message_id', $this->id)->count();
+    }
+
+    public function getRecentHeartAttribute()
+    {
+        return Heart::where('message_id', $this->id)->orderBy('created_at', 'DESC')->limit(1)->first();
     }
 }
