@@ -9,6 +9,10 @@
         {
             "url": "http://localhost/api/v1",
             "description": "Demo API Server"
+        },
+        {
+            "url": "http://badapp-env.eba-75wmggyp.eu-west-1.elasticbeanstalk.com/api/v1",
+            "description": "Prod API Server"
         }
     ],
     "paths": {

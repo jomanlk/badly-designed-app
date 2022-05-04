@@ -280,6 +280,7 @@ return [
          */
         'constants' => [
             'L5_SWAGGER_CONST_HOST' => env('L5_SWAGGER_CONST_HOST', 'http://localhost/api/v1'),
+            'L5_SWAGGER_CONST_PROD_HOST' => env('L5_SWAGGER_CONST_HOST', 'http://badapp-env.eba-75wmggyp.eu-west-1.elasticbeanstalk.com/api/v1'),
         ],
     ],
 ];
