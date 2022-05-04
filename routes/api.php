@@ -28,4 +28,8 @@ Route::group([
   Route::get('/messages', [MessageController::class, 'index']);
   Route::get('/messages/{id}', [MessageController::class, 'show']);
   Route::get('/messages/search/{keyword}', [MessageController::class, 'searchByText']);
+
+  Route::get('info', function () {
+    phpinfo();
+  });
 });
