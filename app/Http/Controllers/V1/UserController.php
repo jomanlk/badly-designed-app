@@ -13,7 +13,7 @@ class UserController extends Controller
 
     /**
      * @OA\Get(
-     *      path="/user/{id}",
+     *      path="/users/{id}",
      *      tags={"Users"},
      *      summary="Get a user",
      *      description="Returns the user object that matches the ID",
@@ -49,7 +49,7 @@ class UserController extends Controller
 
     /**
      * @OA\Get(
-     *      path="/user/search/{keyword}",
+     *      path="/users/search/{keyword}",
      *      tags={"Users"},
      *      summary="Find users by name",
      *      description="Returns all users who have a name that mathes the search query",

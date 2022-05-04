@@ -6,13 +6,29 @@ use App\Http\Controllers\Controller;
 use App\Http\Resources\MessageCollection;
 use App\Http\Resources\MessageResource;
 use App\Models\Message;
-use Illuminate\Http\Request;
 
 class MessageController extends Controller
 {
     /**
      * @OA\Get(
-     *      path="/message/{id}",
+     *      path="/messages",
+     *      tags={"Messages"},
+     *      summary="Retrieve all messages",
+     *      description="Paginated list of all messages",
+     *      @OA\Response(
+     *          response=200,
+     *          description="Messages found",
+     *       ),
+     *     )
+     */
+    public function index()
+    {
+        return new MessageCollection(Message::with(['hearts'])->where('id', '>', 0)->paginate());
+    }
+
+    /**
+     * @OA\Get(
+     *      path="/messages/{id}",
      *      tags={"Messages"},
      *      summary="Get a message",
      *      description="Returns the message object that matches the ID",
@@ -37,7 +53,7 @@ class MessageController extends Controller
      */
     public function show(int $id)
     {
-        $message = Message::find($id);
+        $message = Message::with(['hearts'])->find($id);
         if (empty($message)) {
             return response(["error" => "message not found"], 404);
         }
@@ -48,7 +64,7 @@ class MessageController extends Controller
 
     /**
      * @OA\Get(
-     *      path="/message/search/{keyword}",
+     *      path="/messages/search/{keyword}",
      *      tags={"Messages"},
      *      summary="Find messages by text",
      *      description="Returns all messages that contain the search query",
