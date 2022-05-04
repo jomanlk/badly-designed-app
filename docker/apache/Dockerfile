@@ -7,6 +7,8 @@ FROM php:8.0-apache-buster as production
 ENV APP_ENV=production
 ENV APP_DEBUG=false
 
+RUN apt update && apt install -y zip git
+
 RUN docker-php-ext-install pdo pdo_mysql
 COPY docker/apache/opcache.ini /usr/local/etc/php/conf.d/opcache.ini
 COPY docker/apache/xdebug.ini  /usr/local/etc/php/conf.d/xdebug.ini
