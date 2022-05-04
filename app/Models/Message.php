@@ -9,6 +9,8 @@ class Message extends Model
 {
     use HasFactory;
 
+    protected $appends = ['heart_count'];
+
     public function user()
     {
         return $this->belongsTo(User::class);
@@ -17,5 +19,10 @@ class Message extends Model
     public function hearts()
     {
         return $this->hasMany(Heart::class);
+    }
+
+    public function getHeartCountAttribute()
+    {
+        return Heart::where('message_id', $this->id)->count();
     }
 }

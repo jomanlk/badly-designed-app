@@ -19,7 +19,7 @@ class MessageResource extends JsonResource
             'id' => $this->id,
             'user' => new UserResource(User::find($this->user_id)),
             'message' => $this->message,
-            'heart_total' => $this->heart_total,
+            'heart_count' => $this->heart_count,
             'channels' => explode(' ', $this->channels),
             'hearts' => HeartResource::collection($this->whenLoaded('hearts'))
         ];
