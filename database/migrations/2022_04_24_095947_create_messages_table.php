@@ -17,7 +17,6 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id');
             $table->string('message', 300);
-            $table->integer('heart_total');
             $table->string('channels', 300);
             $table->timestamps();
         });
