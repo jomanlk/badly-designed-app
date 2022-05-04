@@ -12,14 +12,29 @@
         }
     ],
     "paths": {
-        "/message/{id}": {
+        "/messages": {
+            "get": {
+                "tags": [
+                    "Messages"
+                ],
+                "summary": "Retrieve all messages",
+                "description": "Paginated list of all messages",
+                "operationId": "a323cf95fa8e6b62288e7c5ed0069a3f",
+                "responses": {
+                    "200": {
+                        "description": "Messages found"
+                    }
+                }
+            }
+        },
+        "/messages/{id}": {
             "get": {
                 "tags": [
                     "Messages"
                 ],
                 "summary": "Get a message",
                 "description": "Returns the message object that matches the ID",
-                "operationId": "807e830f1c1b2d8b3d85ae5990fa019e",
+                "operationId": "6f8cf6698c05051a511f8767c5220686",
                 "parameters": [
                     {
                         "name": "id",
@@ -41,14 +56,14 @@
                 }
             }
         },
-        "/message/search/{keyword}": {
+        "/messages/search/{keyword}": {
             "get": {
                 "tags": [
                     "Messages"
                 ],
                 "summary": "Find messages by text",
                 "description": "Returns all messages that contain the search query",
-                "operationId": "2442b2808058b5d6219fd7499db5a67f",
+                "operationId": "0d0ff1d2e8c5c4a1e586873607c1c0f4",
                 "parameters": [
                     {
                         "name": "keyword",
@@ -67,14 +82,14 @@
                 }
             }
         },
-        "/user/{id}": {
+        "/users/{id}": {
             "get": {
                 "tags": [
                     "Users"
                 ],
                 "summary": "Get a user",
                 "description": "Returns the user object that matches the ID",
-                "operationId": "266b8697bd4a1a9d08e0fd4336f64483",
+                "operationId": "8cdd0063aa589570e5942f867d43869b",
                 "parameters": [
                     {
                         "name": "id",
@@ -96,14 +111,14 @@
                 }
             }
         },
-        "/user/search/{keyword}": {
+        "/users/search/{keyword}": {
             "get": {
                 "tags": [
                     "Users"
                 ],
                 "summary": "Find users by name",
                 "description": "Returns all users who have a name that mathes the search query",
-                "operationId": "cda312447e8e9aeae036809c48d21c63",
+                "operationId": "59521e27aa61069f445b3e9ebbf66016",
                 "parameters": [
                     {
                         "name": "keyword",
