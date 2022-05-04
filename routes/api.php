@@ -17,17 +17,15 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::group([
-  'prefix' => 'v1', 
-  'namespace' => 'Api\V1', 
+  'prefix' => 'v1',
+  'namespace' => 'Api\V1',
 ], function () {
 
-    Route::get('/user/{id}', [UserController::class, 'show']);
-    Route::get('/user/search/{keyword}', [UserController::class, 'searchByName']);
+  Route::get('/users/{id}', [UserController::class, 'show']);
+  Route::get('/users/search/{keyword}', [UserController::class, 'searchByName']);
 
 
-    Route::get('/message/{id}', [MessageController::class, 'show']);
-    Route::get('/message/search/{keyword}', [MessageController::class, 'searchByText']);
-
+  Route::get('/messages', [MessageController::class, 'index']);
+  Route::get('/messages/{id}', [MessageController::class, 'show']);
+  Route::get('/messages/search/{keyword}', [MessageController::class, 'searchByText']);
 });
-
-
