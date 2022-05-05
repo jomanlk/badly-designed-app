@@ -140,6 +140,43 @@
                     }
                 }
             }
+        },
+        "/users/most-posted": {
+            "get": {
+                "tags": [
+                    "Users"
+                ],
+                "summary": "Find top 5 message posters",
+                "description": "Returns the top 5 message posters within a given date range",
+                "operationId": "f360367f44670b770c33c1548f4119c8",
+                "parameters": [
+                    {
+                        "name": "start_at",
+                        "in": "query",
+                        "description": "Start date to filter by",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "2022-03-20"
+                    },
+                    {
+                        "name": "end_at",
+                        "in": "query",
+                        "description": "End date to filter by",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "2022-03-27"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "List of all users who matched the search query"
+                    }
+                }
+            }
         }
     }
 }

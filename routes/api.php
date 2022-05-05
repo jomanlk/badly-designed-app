@@ -21,8 +21,10 @@ Route::group([
   'namespace' => 'Api\V1',
 ], function () {
 
-  Route::get('/users/{id}', [UserController::class, 'show']);
+
   Route::get('/users/search/{keyword}', [UserController::class, 'searchByName']);
+  Route::get('/users/most-posts', [UserController::class, 'findUsersPostingTheMostMessages']);
+  Route::get('/users/{id}', [UserController::class, 'show']);
 
 
   Route::get('/messages', [MessageController::class, 'index']);
