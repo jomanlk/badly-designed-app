@@ -19,7 +19,7 @@ class HeartResource extends JsonResource
         return [
             'id' => $this->id,
             'user' => new UserResource(User::find($this->user_id)),
-            'message' => new MessageResource(Message::find($this->message_id)),
+            'message' => $this->message_id,
             'created_at' => $this->created_at,
         ];
     }
